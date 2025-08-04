@@ -1,12 +1,11 @@
-// app/stats/page.tsx
 export default async function StatsPage() {
-  // Simulate server-side fetch with cache: 'no-store' to fetch fresh data every request
-  const data = await fetch(
-    "https://api.coindesk.com/v1/bpi/currentprice.json",
-    {
-      cache: "no-store",
-    }
-  ).then((res) => res.json());
+  const apiUrl =
+    process.env.NEXT_PUBLIC_API_URL ||
+    "https://api.coindesk.com/v1/bpi/currentprice.json";
+
+  const data = await fetch(apiUrl, { cache: "no-store" }).then((res) =>
+    res.json()
+  );
 
   return (
     <section className="max-w-4xl mx-auto py-12 px-6 text-center">
