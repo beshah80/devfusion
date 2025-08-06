@@ -1,13 +1,14 @@
-// app/layout.tsx
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata = {
-  title: "DevFusion | Full-Stack Blog & Portfolio",
-  description: "A full-featured Next.js project with modern web concepts.",
+  title: "DevFusion - Next.js Portfolio & Blog",
+  description:
+    "A modern Next.js portfolio and blog app with dynamic routing, SSR, and more.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -16,10 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className="scroll-smooth">
+      <body className="bg-[#E6F7FF] text-[#333333] font-serif min-h-screen flex flex-col">
         <Navbar />
-        <main className="px-4 md:px-8 lg:px-16 py-6">{children}</main>
+        <main className="container flex-grow py-12">{children}</main>
+        <Footer />
       </body>
     </html>
   );
