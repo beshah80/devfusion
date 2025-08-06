@@ -33,108 +33,105 @@ export default function ContactPage() {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      // Simulate submission
       setSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setSubmitted(false), 5000);
     }
   };
 
   return (
-    <section className="bg-white rounded-xl shadow-lg p-8 max-w-lg mx-auto my-12">
-      <h1 className="text-4xl font-extrabold text-gray-800 mb-6 text-center">
-        Get in Touch
-      </h1>
-      <p className="text-gray-600 text-center mb-8">
-        We'd love to hear from you. Please fill out the form below.
-      </p>
-      {submitted && (
-        <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg transition-opacity duration-300 ease-in-out opacity-100">
-          Thank you for your message! We will get back to you soon.
-        </div>
-      )}
-      <form onSubmit={handleSubmit} noValidate>
-        <div className="mb-5">
-          <label
-            htmlFor="name"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your name"
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors duration-200 ${
-              errors.name
-                ? "border-red-500 focus:ring-red-200"
-                : "border-gray-300 focus:border-blue-400 focus:ring-blue-100"
-            }`}
-          />
-          {errors.name && (
-            <p className="text-red-500 text-sm mt-2">{errors.name}</p>
-          )}
-        </div>
+    <main className="min-h-screen bg-[#E6F7FF] px-6 py-24 text-[#333333]">
+      <section className="max-w-2xl mx-auto bg-white p-10 rounded-3xl shadow-2xl border border-blue-200 animate-fade-in">
+        <h1 className="text-5xl font-bold mb-6 text-[#333333] text-center">
+          Contact Us
+        </h1>
+        <p className="text-xl text-[#333333] mb-10 text-center leading-relaxed">
+          Got a question, feedback, or collaboration idea? Fill out the form
+          below, and our team will respond promptly to keep the conversation
+          going.
+        </p>
 
-        <div className="mb-5">
-          <label
-            htmlFor="email"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="you@example.com"
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors duration-200 ${
-              errors.email
-                ? "border-red-500 focus:ring-red-200"
-                : "border-gray-300 focus:border-blue-400 focus:ring-blue-100"
-            }`}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-2">{errors.email}</p>
-          )}
-        </div>
+        {submitted && (
+          <div className="mb-8 p-6 bg-green-100 text-green-800 rounded-xl text-center font-semibold text-lg animate-fade-in">
+            Thank you for your message! We&apos;ll get back to you soon.
+          </div>
+        )}
 
-        <div className="mb-5">
-          <label
-            htmlFor="message"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Your message here..."
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors duration-200 ${
-              errors.message
-                ? "border-red-500 focus:ring-red-200"
-                : "border-gray-300 focus:border-blue-400 focus:ring-blue-100"
-            }`}
-          />
-          {errors.message && (
-            <p className="text-red-500 text-sm mt-2">{errors.message}</p>
-          )}
-        </div>
+        <form onSubmit={handleSubmit} noValidate>
+          <div className="mb-6">
+            <label htmlFor="name" className="block mb-2 font-semibold text-lg">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className={`w-full border px-4 py-3 rounded-xl focus:outline-none focus:ring-2 ${
+                errors.name
+                  ? "border-red-500 focus:ring-red-400"
+                  : "border-blue-300 focus:ring-blue-500"
+              }`}
+            />
+            {errors.name && (
+              <p className="text-red-500 text-base mt-2">{errors.name}</p>
+            )}
+          </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors duration-200"
-        >
-          Send Message
-        </button>
-      </form>
-    </section>
+          <div className="mb-6">
+            <label htmlFor="email" className="block mb-2 font-semibold text-lg">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={`w-full border px-4 py-3 rounded-xl focus:outline-none focus:ring-2 ${
+                errors.email
+                  ? "border-red-500 focus:ring-red-400"
+                  : "border-blue-300 focus:ring-blue-500"
+              }`}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-base mt-2">{errors.email}</p>
+            )}
+          </div>
+
+          <div className="mb-8">
+            <label
+              htmlFor="message"
+              className="block mb-2 font-semibold text-lg"
+            >
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={6}
+              value={formData.message}
+              onChange={handleChange}
+              className={`w-full border px-4 py-3 rounded-xl focus:outline-none focus:ring-2 resize-none ${
+                errors.message
+                  ? "border-red-500 focus:ring-red-400"
+                  : "border-blue-300 focus:ring-blue-500"
+              }`}
+            />
+            {errors.message && (
+              <p className="text-red-500 text-base mt-2">{errors.message}</p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition transform hover:scale-105"
+          >
+            Send Message
+          </button>
+        </form>
+      </section>
+    </main>
   );
 }
